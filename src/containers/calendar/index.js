@@ -1,9 +1,12 @@
 import React, { Component } from 'react'
+import DaysHeader from '../../components/calendar/days-header'
 
 class Calendar extends Component {
   render() {
     return (
-      <div>Calendar</div>
+      <div className='Calendar'>
+        <DaysHeader />
+      </div>
     )
   }
 }
