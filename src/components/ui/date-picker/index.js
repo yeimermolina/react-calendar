@@ -8,6 +8,7 @@ const DatePicker = ({ selectedDate, handleChange }) => (
     <Picker
       selected={selectedDate}
       onChange={handleChange}
+      dateFormat="DD-MM-YYYY"
     />
   </div>
 )

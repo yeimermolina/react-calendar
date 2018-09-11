@@ -7,8 +7,8 @@ const Day = ({ day, active, isHoliday, isWeekend}) => {
         isHoliday
           ? '#F6511D'
           : isWeekend
-            ? '#f1f151' 
-            : '#44ce44' 
+            ? '#FFB400' 
+            : '#7FB800' 
       : '#4e4e3c6b'
   }
   return (

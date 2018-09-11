@@ -2,12 +2,23 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import DatePicker from '../../components/ui/date-picker'
 import Input from '../../components/ui/input'
-import Input from '../../components/ui/button'
+import Button from '../../components/ui/button'
 import * as actionCreator from '../../store/actions/calendar'
 
 class Menu extends Component {
+  constructor(props) {
+    super(props)
+    this.handleStart = this.handleStart.bind(this)
+  }
+
+  handleStart() {
+    this.props.generateCalendar()
+    this.props.history.push('/calendar')
+  }
+
   render() {
-    const { startDate, handleStartDate, numberDays, countryCode, handleDaysNumber, handleCountryCode } = this.props
+    const { startDate, handleStartDate, numberDays, countryCode, handleDaysNumber, handleCountryCode, generateCalendar } = this.props
+    console.log(this.props)
     return (
       <div className='Menu'>
         <DatePicker 
@@ -24,6 +35,10 @@ class Menu extends Component {
           handleChange={handleCountryCode}
           value={countryCode}
           name='countryCode'
+        />
+        <Button 
+          onClick={this.handleStart}
+          content='START'
         />
       </div>
     )
@@ -43,6 +58,7 @@ const mapDispatchToProps = dispatch => {
       handleStartDate: (date) => dispatch(actionCreator.handleStartDate(date)),
       handleDaysNumber: (event) => dispatch(actionCreator.handleDaysNumber(event)),
       handleCountryCode: (event) => dispatch(actionCreator.handleCountryCode(event)),
+      generateCalendar: (event) => dispatch(actionCreator.generateCalendar(event)),
   }
 }
 

@@ -28,7 +28,7 @@ export const handleDaysNumber = ({ target }) => {
 
 export const handleCountryCode = ({ target }) => {
   return {
-    type: actionTypes.HANDLE_NUMBER_DAYS,
+    type: actionTypes.HANDLE_COUNTRY_CODE,
     payload: target.value
   }
 }

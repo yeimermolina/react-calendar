@@ -17,12 +17,11 @@ export const generateWeeks = (currentMonth, currentYear, startDay, startMonth, s
   do {
     calendarDays.push({
       day: currentDate,
-      active: currentDate.isSameOrAfter(startDate) && currentDate.diff(startDate, DAYS) < maxDays,
+      active: currentDate.isSameOrAfter(startDate) && currentDate.diff(startDate, DAYS) <= maxDays,
       isHoliday: hd.isHoliday(currentDate.toDate()),
       isWeekend: currentDate.day()=== SUNDAY || currentDate.day() === SATURDAY
     });
     currentDate = moment(currentDate).add(1, DAYS)
-    console.log('test')
   } while((currentDate.month() + 1) === currentMonth)
 
   // Fill previous month days

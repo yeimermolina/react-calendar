@@ -15,7 +15,10 @@ const initialState = {
 }
 
 const reducer = (state = initialState, action) => {
-  const { currentYear, currentMonth } = state
+  const { currentYear, currentMonth, startDate, numberDays, countryCode } = state
+  const initialYear = startDate.year()
+  const initialMonth = startDate.month() + 1
+  const initialDay = startDate.date()
   let year, month
   switch (action.type) {
     case actionTypes.INCREMENT_MONTH:
@@ -25,7 +28,7 @@ const reducer = (state = initialState, action) => {
         ...state,
         currentYear: year,
         currentMonth: month,
-        weeks: generateWeeks(month, year, 2, 7, 2018, 30, 'US'),
+        weeks: generateWeeks(month, year, initialDay, initialMonth, initialYear, numberDays, countryCode),
       }
     case actionTypes.DECREMENT_MONTH:
       year = currentMonth === 1 ? currentYear - 1 : currentYear,
@@ -34,7 +37,7 @@ const reducer = (state = initialState, action) => {
         ...state,
         currentYear: year,
         currentMonth: month,
-        weeks: generateWeeks(month, year, 2, 7, 2018, 30, 'US'),
+        weeks: generateWeeks(month, year, initialDay, initialMonth, initialYear, numberDays, countryCode),
       }
     case actionTypes.HANDLE_START_DATE:
       return {
@@ -52,8 +55,15 @@ const reducer = (state = initialState, action) => {
         countryCode: action.payload
       }
     case actionTypes.GENERATE_CALENDAR:
+      
       return {
-        ...state
+        ...state,
+        initialYear,
+        initialMonth,
+        initialDay,
+        currentMonth: initialMonth,
+        currentYear: initialYear,
+        weeks: generateWeeks(initialMonth, initialYear, initialDay, initialMonth, initialYear, numberDays, countryCode),
       }
     default:
       return state
