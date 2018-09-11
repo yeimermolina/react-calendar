@@ -1,10 +1,15 @@
 
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Monoton');
+@import './styles/breakpoints/breakpoints';
+@import './styles/breakpoints/mixins';
 @import './styles/components/days-header.scss';
 @import './styles/components/month-header.scss';
+@import './styles/components/day.scss';
+@import './styles/components/layout/navbar.scss';
 @import './styles/containers/calendar.scss';
 
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
