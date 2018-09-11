@@ -1,5 +1,20 @@
 .Day {
     width: 100%;
     padding: 0.5rem;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+
+    .Day-number {
+        align-self: flex-start;
+        font-size: 16px;
+    }
+
+    .Day-holiday {
+        align-self: flex-end;
+        font-size: 12px;
+
+        @include sm-max {
+            display: none;
+          }
+    }
 }

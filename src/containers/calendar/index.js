@@ -3,10 +3,11 @@ import { connect } from 'react-redux'
 import * as actionCreator from '../../store/actions/calendar'
 import DaysHeader from '../../components/calendar/days-header'
 import MonthHeader from '../../components/calendar/month-header'
+import Day from '../../components/calendar/day'
 
 class Calendar extends Component {
   render() {
-    const { currentMonth, currentYear, onNextMonth, onPreviousMonth } = this.props
+    const { currentMonth, currentYear, onNextMonth, onPreviousMonth, weeks } = this.props
     return (
       <div className='Calendar'>
         <MonthHeader 
@@ -16,6 +17,23 @@ class Calendar extends Component {
           prev={onPreviousMonth}
         />
         <DaysHeader />
+        <div className='week-container'>
+          {
+            weeks.map(week => {
+              return (
+                <div className='week'>
+                  {
+                    week.map(day => (
+                      <Day 
+                        {...day}
+                      />
+                    ))
+                  }
+                </div>
+              )
+            })
+          }
+        </div>
       </div>
     )
   }
@@ -24,7 +42,8 @@ class Calendar extends Component {
 const mapStateToProps = ({ calendar }) => {
   return {
     currentYear: calendar.currentYear,
-    currentMonth: calendar.currentMonth
+    currentMonth: calendar.currentMonth,
+    weeks: calendar.weeks
   }
 }
 
