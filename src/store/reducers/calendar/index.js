@@ -1,5 +1,6 @@
 import * as actionTypes from '../../actions/actionTypes'
 import { generateWeeks } from '../../../utils/generateCalendar'
+import moment from 'moment';
 
 const initialState = {
   currentYear: 2018,
@@ -7,8 +8,10 @@ const initialState = {
   initialYear: 2018,
   initialMonth: 7,
   initialDay: 2,
-  weeks: generateWeeks(7, 2018, 2, 7, 2018, 30, 'US'),
-  days: 10
+  weeks: [],
+  numberDays: 10,
+  startDate: moment(),
+  countryCode: 'US'
 }
 
 const reducer = (state = initialState, action) => {
@@ -32,6 +35,25 @@ const reducer = (state = initialState, action) => {
         currentYear: year,
         currentMonth: month,
         weeks: generateWeeks(month, year, 2, 7, 2018, 30, 'US'),
+      }
+    case actionTypes.HANDLE_START_DATE:
+      return {
+        ...state,
+        startDate: action.payload
+      }
+    case actionTypes.HANDLE_NUMBER_DAYS:
+      return {
+        ...state,
+        numberDays: action.payload
+      }
+    case actionTypes.HANDLE_COUNTRY_CODE:
+      return {
+        ...state,
+        countryCode: action.payload
+      }
+    case actionTypes.GENERATE_CALENDAR:
+      return {
+        ...state
       }
     default:
       return state
