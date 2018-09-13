@@ -9,7 +9,7 @@ const Day = ({ day, active, isHoliday, isWeekend}) => {
           : isWeekend
             ? '#FFB400' 
             : '#7FB800' 
-      : '#4e4e3c6b'
+      : '#e2e2c66b'
   }
   return (
     <div className='Day' style={styles}>

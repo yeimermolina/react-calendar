@@ -24,17 +24,20 @@ class Menu extends Component {
         <DatePicker 
           selectedDate={startDate}
           handleChange={handleStartDate}
+          label={'Start Date'}
         />
         <Input
           handleChange={handleDaysNumber}
           value={numberDays}
           name='numberDays'
           type={'number'}
+          label='Number of days'
         />
         <Input 
           handleChange={handleCountryCode}
           value={countryCode}
           name='countryCode'
+          label='Country Code'
         />
         <Button 
           onClick={this.handleStart}
