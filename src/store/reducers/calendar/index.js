@@ -22,7 +22,7 @@ const reducer = (state = initialState, action) => {
   let year, month
   switch (action.type) {
     case actionTypes.INCREMENT_MONTH:
-      year = currentMonth === 12 ? currentYear + 1 : currentYear,
+      year = currentMonth === 12 ? currentYear + 1 : currentYear
       month = currentMonth === 12 ? 1 : currentMonth + 1
       return {
         ...state,
@@ -31,7 +31,7 @@ const reducer = (state = initialState, action) => {
         weeks: generateWeeks(month, year, initialDay, initialMonth, initialYear, numberDays, countryCode),
       }
     case actionTypes.DECREMENT_MONTH:
-      year = currentMonth === 1 ? currentYear - 1 : currentYear,
+      year = currentMonth === 1 ? currentYear - 1 : currentYear
       month = currentMonth === 1 ? 12 : currentMonth - 1
       return {
         ...state,

@@ -17,8 +17,7 @@ class Menu extends Component {
   }
 
   render() {
-    const { startDate, handleStartDate, numberDays, countryCode, handleDaysNumber, handleCountryCode, generateCalendar } = this.props
-    console.log(this.props)
+    const { startDate, handleStartDate, numberDays, countryCode, handleDaysNumber, handleCountryCode } = this.props
     return (
       <div className='Menu'>
         <DatePicker 

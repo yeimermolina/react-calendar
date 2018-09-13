@@ -1,5 +1,4 @@
 import moment from 'moment'
-import _ from 'lodash'
 import Holidays from 'date-holidays'
 
 const SATURDAY = 6
