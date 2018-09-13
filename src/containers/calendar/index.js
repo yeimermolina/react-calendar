@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Redirect } from 'react-router'
 import { connect } from 'react-redux'
 import * as actionCreator from '../../store/actions/calendar'
 import DaysHeader from '../../components/calendar/days-header'
@@ -6,9 +7,10 @@ import MonthHeader from '../../components/calendar/month-header'
 import Day from '../../components/calendar/day'
 
 class Calendar extends Component {
+
   render() {
     const { currentMonth, currentYear, onNextMonth, onPreviousMonth, weeks } = this.props
-    return (
+    return weeks.length ? (
       <div className='Calendar'>
         <MonthHeader 
           year={currentYear}
@@ -35,7 +37,7 @@ class Calendar extends Component {
           }
         </div>
       </div>
-    )
+    ) : <Redirect to="/" />
   }
 }
 
